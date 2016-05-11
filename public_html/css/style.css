@@ -6,6 +6,15 @@ body{
 main{
     flex: 1 0 auto;
 }
-.right-space{
-    margin-left: 554.5px;
+.img_logo{
+    margin-left: 504.5px;
+}
+/*.fixed{
+    position: fixed;
+}*/
+.fixed-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
 }

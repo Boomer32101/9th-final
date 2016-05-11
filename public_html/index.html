@@ -16,10 +16,10 @@ and open the template in the editor.
     </head>
     <body>
         <header>
-            <nav>
+            <nav class="fixed-nav-bar">
                 <div class="nav-wrapper">
-                    <div class="right-space">
-                        <a href="#" class="brand-logo"><img src="default-placeholder.png" alt="Logo" style="width:240px;height:240px;"></a>
+                    <div class="img_logo">
+                        <a href="#" class="brand-logo"><img src="img/default-placeholder.png" alt="Logo" style="width:340px;height:200px;"></a>
                     </div>
                     
                    <!left side>
@@ -42,7 +42,38 @@ and open the template in the editor.
             
         <main>
             <div class="container">
-                <p>main</p>
+                <div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="img/test-1.jpg" alt="1"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="img/test-2.jpg" alt="2"> <!-- random image -->
+        <div class="caption left-align">
+          <h3>Left Aligned Caption</h3> 
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="img/test-3.jpg" alt="3"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="img/test-4.jpg" alt="4"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
             </div>
         </main>
         
@@ -52,5 +83,6 @@ and open the template in the editor.
         
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/home.js"></script>
     </body>
 </html>
