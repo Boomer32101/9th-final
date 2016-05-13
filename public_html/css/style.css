@@ -19,7 +19,7 @@ main{
   z-index: 9999;
 }
 .c-down{
-    margin-top: 140px;
+    margin-top: 160px;
 }
 .bvs{
     padding-top: 230px;
@@ -32,4 +32,10 @@ main{
 }
 .red-color{
     color: #e03135;
+}
+.s-down{
+    margin-top: 60px;
+}
+.sum {
+    font-size: 140%;
 }
