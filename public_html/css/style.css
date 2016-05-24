@@ -63,6 +63,8 @@ main{
     background-color: #9e9e9e;
 }
 .img-controller{
-    max-width: 340px;
-    max-height: 0 auto 30px;
+    min-width: 0 auto 30px;
+    min-height: 650px;
+    max-width: 0 auto 30px;
+    max-height: 650px;
 }
