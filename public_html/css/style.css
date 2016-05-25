@@ -64,7 +64,10 @@ main{
 }
 .img-controller{
     min-width: 0 auto 30px;
-    min-height: 650px;
+    min-height: 550px;
     max-width: 0 auto 30px;
-    max-height: 650px;
+    max-height: 550px;
+}
+.com-down{
+   margin-bottom: 40px;
 }
