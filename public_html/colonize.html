@@ -1,0 +1,417 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+ 
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1" />
+<style type="text/css">
+  img { height:20px;width:20px;border:2px inset #cccccc; }
+   
+  body, td { font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 9pt; }
+   
+  .stats_head, .stats_alive, .stats_born, .stats_dying
+  {
+    margin: 3px;
+    padding: 3px;
+    font-size: 10pt;
+  }
+  .stats_head { background:black;color:white;font-weight:bold;text-align:center;padding:6px; }
+  .stats_alive { background:#ddddff;color:#0000cc;border:solid 1px #0000ff; }
+  .stats_born  { background:#ddffdd;color:#00cc00;border:solid 1px #00ff00; }
+  .stats_dying { background:#ffdddd;color:#cc0000;border:solid 1px #ff0000; }
+ 
+</style>
+<title>Get a life.</title>
+<script type="text/javascript">
+<!--
+var width; // the width of the field, in cells
+var height; // the height of the field, in cells
+var stopped = 1; // 1 if the game has been halted, 0 otherwise
+var alive = 0; // the number of organisms that are alive now
+var born = 0; // the number of organisms that were born this turn
+var dying = 0; // the number of organisms that died this turn
+var min_window_r; // the lowest row number that is tested
+var min_window_c; // the lowest column number that is tested
+var max_window_r; // the highest row number that is tested
+var max_window_c; // the highest column number that is tested
+ 
+var empty_cell = new Image();
+empty_cell.width = 20; empty_cell.height = 20; empty_cell.src = "http://www.nasa.gov/images/content/432270main_lavachannels_tharsis_HI.jpg";
+var alive_cell = new Image();
+alive_cell.width = 20; alive_cell.height = 20; alive_cell.src = "http://images.designntrend.com/data/images/full/72377/mark-watney.png?w=780";
+var born_cell  = new Image();
+born_cell.width  = 20; born_cell.height  = 20; born_cell.src  = "http://images.designntrend.com/data/images/full/72377/mark-watney.png?w=780";
+var dying_cell = new Image();
+dying_cell.width = 20; dying_cell.height = 20; dying_cell.src = "https://cdn.shopify.com/s/files/1/0668/3101/products/one-piece-monkey-d-luffy-skull-sticker_1024x1024.jpg?v=1424656797";
+ 
+/*
+Function to change the status of a cell
+This is used when the user clicks on cell(i, j).
+The cell is retrieved and its status is changed as necessary.
+Alive and recently born cells are changed to dead.
+Dead and dying cells are changed to alive.
+ */
+function change(i, j) {
+    if (stopped == 0) return;
+    var cell = document.getElementById(i + '_' + j);
+    var status = cell.src;
+ 
+    if ((status == born_cell.src) || (status == alive_cell.src)) {
+        if (status == alive_cell.src) alive--;
+        if (status == born_cell.src)  born--;
+        status = empty_cell.src;
+    }
+     
+    else if ((status == dying_cell.src) || (status == empty_cell.src)) {
+        if (status == dying_cell.src) dying--;
+        status = alive_cell.src;
+        alive++; 
+    }
+         
+    cell.src = status;
+    updateStats();
+}
+ 
+/*
+Function to create the map of cells on the screen
+The values of the width and height fields are taken for the size of the map.
+Then DOM functions are used to create a new map of cells.
+*/
+function createMap() {
+    width  = parseInt(document.generate.cols.value);
+    height = parseInt(document.generate.rows.value);
+     
+    var container = document.getElementById('container');
+     
+    while (container.hasChildNodes()) {
+        var child = container.firstChild;
+        container.removeChild(child);
+    }
+     
+    for (var i = 0; i < height; i++) {
+        for (var j = 0; j < width; j++) {
+            if (navigator.appName == 'Microsoft Internet Explorer') {
+                var cell = document.createElement("<img id=" + i + '_' + j + " onclick='change(" + i + ',' + j + ");' src='" + empty_cell.src + "'>");
+            }
+            else {
+                var cell = document.createElement("img");
+                cell.setAttribute('id', i + '_' + j);
+                cell.setAttribute('onclick', "change(" + i + ',' + j + ");");
+                cell.setAttribute('src', empty_cell.src);
+            }
+            container.appendChild(cell);
+        }
+        container.appendChild(document.createElement('br'));
+    }
+     
+    document.control.start.disabled = false;
+    document.control.stop.disabled = true;
+    document.control.clearbtn.disabled = false;
+     
+    born = 0; alive = 0; dying = 0;
+    updateStats();
+}
+ 
+/*
+Used to determine how many cells that are adjacent to (i, j) are occupied.
+Any cell that was alive at the start of the turn is counted.
+(This includes both "alive" and "dying" cells.)
+*/
+function count_neighbors(i, j) {
+    var count = 0;
+    var r, c;
+    for (r = -1; r <= 1; r++) {
+        for (c = -1; c <= 1; c++) {
+            if ((r == 0) && (c == 0)) continue;
+            if ((i + r == -1) || (j + c == -1) || (i + r == height) || (j + c == width))
+                continue;
+            var other_cell = document.getElementById((i+r) + '_' + (j+c));
+            var other = other_cell.src;
+            if ((other == dying_cell.src) || (other == alive_cell.src)) count++;
+        }
+    }
+    return count;
+}
+ 
+/*
+Resizes the internal "window" of the cells that are actually updated.
+This is an optimization feature - a bounding box is drawn around all the cells on the board,
+and only cells within that box will be run.
+*/
+function resizeWindow() {
+    var i, j;
+ 
+    // get a new value for minimum row
+    outer_loop1:
+    for (i = min_window_r; i <= max_window_r; i++) { 
+        for (j = min_window_c; j <= max_window_c; j++) {
+            var cell = document.getElementById(i + '_' + j);
+            var status = cell.src;
+            if (status == alive_cell.src) {
+                if (i == 0)
+                    min_window_r = i;
+                else
+                    min_window_r = i - 1;
+                break outer_loop1;
+            }
+        }
+    }
+     
+    // get a new value for maximum row
+    outer_loop2:
+    for (i = max_window_r; i >= min_window_r; i--) { 
+        for (j = min_window_c; j <= max_window_c; j++) {
+            var cell = document.getElementById(i + '_' + j);
+            var status = cell.src;
+            if (status == alive_cell.src) {
+                if (i == height - 1)
+                    max_window_r = i;
+                else
+                    max_window_r = i + 1;
+                break outer_loop2;
+            }
+        }
+    }
+ 
+    // get a new value for minimum column   
+    outer_loop3:
+    for (j = min_window_c; j <= max_window_c; j++) {
+        for (i = min_window_r; i <= max_window_r; i++) {
+            var cell = document.getElementById(i + '_' + j);
+            var status = cell.src;
+            if (status == alive_cell.src) {
+                if (j == 0)
+                    min_window_c = j;
+                else
+                    min_window_c = j - 1;
+                break outer_loop3;
+            }
+        }
+    }
+ 
+    // get a new value for maximum column
+    outer_loop4:
+    for (j = max_window_c; j >= min_window_c; j--) {
+        for (i = min_window_r; i <= max_window_r; i++) {
+            var cell = document.getElementById(i + '_' + j);
+            var status = cell.src;
+            if (status == alive_cell.src) {
+                if (j == width - 1)
+                    max_window_c = j;
+                else
+                    max_window_c = j + 1;
+                break outer_loop4;
+            }
+        }
+    }
+}
+ 
+ 
+/*
+Runs through the logic of the game.
+Each cell is examined.  If it has an organism with either zero or one neighbor, or more than three,
+it is marked for deletion.  If it is empty and has three neighbors, it is marked to create
+a new organism.
+The statistics are updated and process() is scheduled to be called.
+*/
+function update() {
+    if (stopped == 1) return;
+     
+    var i, j;
+    for (i = min_window_r; i <= max_window_r; i++) {
+        for (j = min_window_c; j <= max_window_c; j++) {
+             
+            var cell = document.getElementById(i + '_' + j);
+            var status = cell.src;
+             
+            if (status == empty_cell.src) {
+              var count = count_neighbors(i, j);                    
+                if (count == 3) {
+                    cell.src = born_cell.src;
+                    born++;
+                }
+            }
+ 
+            else if (status == alive_cell.src) {
+            var count = count_neighbors(i, j);
+                if ((count != 2) && (count != 3)) {
+                    cell.src = dying_cell.src;
+                    dying++;
+                }
+            }
+        }
+    }
+    window.setTimeout("process();", 100);   
+    updateStats();
+} 
+ 
+/*
+Processes the commands set by update().
+Any cells set for deletion or creation are processed and completed.
+After this function runs, all cells are either "dead" or "alive".
+The statistics are updated and update() is scheduled to be called,
+unless the game has been stopped.
+*/
+function process() {
+    var i, j;
+    for (i = min_window_r; i <= max_window_r; i++) {
+        for (j = min_window_c; j <= max_window_c; j++) {
+            var cell = document.getElementById(i + '_' + j);
+            var status = cell.src;
+            if (status == dying_cell.src)   cell.src = empty_cell.src;
+            if (status == born_cell.src)    cell.src = alive_cell.src;
+        }
+    }
+ 
+    if (born == 0 && dying == 0)
+        stopLife();
+ 
+    alive += (born - dying);    
+    born = dying = 0;
+    updateStats();
+ 
+    if (alive == 0)
+        stopLife();
+     
+    if (stopped == 0) {
+        window.setTimeout("update();", 100);
+        resizeWindow();
+    }
+}
+ 
+/*
+Halts execution of the game
+This function just sets the value of "stopped" to 1,
+then disables the stop button and enables the start button.
+*/
+function stopLife() {
+    stopped = 1;
+    document.control.start.disabled = false;
+    document.control.stop.disabled  = true;
+}
+ 
+/*
+Begins the game
+This functions sets the value of "stopped" to 0,
+enables the "stop" button and disables the "start" button,
+and runs the function update() to start the game.
+*/
+function startLife() {
+    document.control.stop.disabled  = false;
+    document.control.start.disabled = true;
+    stopped = 0;
+    min_window_r = 0;
+    min_window_c = 0;
+    max_window_r = height - 1;
+    max_window_c = width - 1;
+    resizeWindow();
+    update();
+}
+ 
+/*
+Empties the board
+Every living, dying, or born organism on the map is cleared out
+and set to "dead".  The statistics are also reset to 0.
+*/
+function empty() {
+    for (var i = 0; i < height; i++) {
+        for (var j = 0; j < width; j++) {
+            var cell = document.getElementById(i + '_' + j);
+            cell.src = empty_cell.src;
+        }
+    }
+    born = 0;
+    dying = 0;
+    alive = 0;
+    stopLife();
+    updateStats();
+}
+ 
+/*
+Shows off the statistics to the user
+The cells that display the number of alive, born, and dying organisms are updated.
+*/
+function updateStats() {
+ 
+    var alive_stat = document.getElementById('alive');
+    alive_stat.removeChild(alive_stat.firstChild);
+    alive_stat.appendChild(document.createTextNode(alive));
+     
+    var born_stat = document.getElementById('born');
+    born_stat.removeChild(born_stat.firstChild);
+    born_stat.appendChild(document.createTextNode(born));
+ 
+    var dying_stat = document.getElementById('dying');
+    dying_stat.removeChild(dying_stat.firstChild);
+    dying_stat.appendChild(document.createTextNode(dying));
+ 
+}
+-->
+</script>
+</head>
+<body onLoad="createMap();">
+ 
+<a name="top"></a>
+<form name="generate" id="generate" action="">
+    <table summary="">
+        <tr>
+            <td colspan="2"><a href="#help">What the heck is this?</a></td>
+        </tr>
+        <tr>
+            <td>Rows:<input type="text" name="rows" value="12" size="2"/></td>
+            <td>Columns:<input type="text" name="cols" value="12" size="2" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" name="create" value="Create!" onClick="createMap();" />
+            </td>
+        </tr>
+    </table>
+</form>
+ 
+<form name="control" id="control" action="">
+    <table summary=""><tr>
+        <td id="container" valign="top">  </td>
+        <td id="stats" valign="top">
+            <table frame="void" summary="Statistics">
+                <tr><td colspan="2" class="stats_head">Statistics</td></tr>
+                <tr><td class="stats_alive" align="left">Alive</td><td id="alive" class="stats_alive" align="right">0</td></tr>
+                <tr><td class="stats_born" align="left">Born</td><td id="born" class="stats_born" align="right">0</td></tr>
+                <tr><td class="stats_dying" align="left">Died</td><td id="dying" class="stats_dying" align="right">0</td></tr>
+            </table>
+        </td>
+    </tr></table>
+    <p>
+        <input type="button" name="start" value="Start!" onClick="startLife();" disabled="true" id="start" />
+        <input type="button" name="stop"  value="Stop!"  onClick="stopLife();"  disabled="true" id="stop"  />
+        <input type="button" name="clearbtn" value="Clear!" onClick="empty();"  disabled="true" id="clear" />
+    </p>
+</form>
+ 
+<hr noshade="noshade" color="#990000" />
+ 
+<a name="help"></a>
+<p>
+"Get a Life!" is an implementation of the famous "Life" simulation.  It tracks the growth and change of a population of organisms on a board over time.  The rules are very simple - each generation, the eight squares adjacent to each organism are examined to see if they are occupied by a neighboring organism.  If there are zero or one neighbors, the organism dies of isolation.  If there are four or more neighbors, the organism dies of overcrowding.  Also, any empty spaces with exactly three neighbors will have an organism born next generation.  Things keep continuing until either all organisms die out or you stop the game. 
+</p>
+ 
+<p>
+So, the important thing is now, how do you use this?  The first thing to do is to create the board, by entering the number of rows and columns in the fields above, then hitting "Create!"  After that, make the initial configuration of organisms by clicking where you want the organisms to go.  Finally, when you're ready, click "Start!" and watch the show!  You can also click "Stop!" to freeze the game cycle (like if you want to make any changes to the current layout) and "Clear!" to remove all the organisms from the board.
+</p>
+ 
+<p>
+Here's a legend of the symbols on the board:
+<table summary="Legend of symbols">
+<tr><td><img src="http://www.nasa.gov/images/content/432270main_lavachannels_tharsis_HI.jpg" alt="Empty square" /></td><td>An empty square on the board</td></tr>
+<tr><td><img src="http://images.designntrend.com/data/images/full/72377/mark-watney.png?w=780" alt="Living organism" /></td><td>A healthy, living organism</td></tr>
+<tr><td><img src="https://cdn.shopify.com/s/files/1/0668/3101/products/one-piece-monkey-d-luffy-skull-sticker_1024x1024.jpg?v=1424656797" alt="Dying organism" /></td><td>An organism that has just died</td></tr>
+<tr><td><img src="http://images.designntrend.com/data/images/full/72377/mark-watney.png?w=780" alt="Recently born organism" /></td><td>An organism that was just born</td></tr>
+</table>
+Also note the figures to the right of the board - they show the number of organisms currently alive, the number that were born this generation, and the number that died this generation.
+</p>
+ 
+<p>Get a Life! was tested with both Mozilla Firefox 1.0 and Internet Explorer 6.0.  Make sure that you have JavaScript activated - if you don't, Get a Life is kind of non-functional.</p>
+ 
+<p><a href="#top">Take me back to the top!</a></p>
+</body>
+</html>
