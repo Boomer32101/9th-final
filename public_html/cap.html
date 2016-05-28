@@ -1,0 +1,1404 @@
+<html>
+<head>
+<title>Cap vs Everyone</title>
+<meta http-equiv="Content-Type" content="text/html;CHARSET=iso-8859-1">
+<script>
+//Feel free to use this game on your site just keep a link to me. and email me at dominus54@hotmail.com
+// Monster generator -----------------------------------------------_____--------============
+function opponent() {
+var bigrandum = Math.round(Math.random() * 20)
+var randum1 = Math.round(Math.random() * 7)
+var randum2 = Math.round(Math.random() * 6)
+var yourlevel = parseFloat(document.game.level.value)
+ 
+var randum = randum1 + randum2 + (yourlevel * 2)
+var yourlife = parseFloat(document.game.life.value)
+var cash = parseFloat(document.game.money.value)
+var yourlife = parseFloat(document.game.life.value)
+var yourattack = parseFloat(document.game.attackdamage.value) 
+     
+     
+    if (document.game.enemyattack.value == 11) {
+    if (document.game.badlife.value > 1) {
+    return false
+    }
+    }
+    if (document.game.enemyattack.value == 49) {
+    if (document.game.badlife.value > 1) {
+    return false
+    }
+    }
+    if (document.game.enemyattack.value == 30) {
+    if (document.game.badlife.value > 1) {
+    return false
+    }
+    }
+    if (document.game.enemyattack.value == 61) {
+    if (document.game.badlife.value > 1) {
+    return false
+    }
+    }
+    if (yourlevel == 1) {
+    document.game.storyline.value = "As soon as you leave the battle of your city you are attacked by Shield.  Your bucky ais frightened because they dont know what to do. Zemo pulls out his book and fights buckys brain with it.  Tony wages war."
+    }
+if (bigrandum == 18) {
+document.game.money.value = Math.round(cash - (cash * .18))
+document.game.f2.value = "A bucky stole " + Math.round(cash * .18) + " gold from you."
+}
+if (bigrandum > 13) {
+buysomethin()
+document.game.life.value = yourlife + 1
+    if (randum1 == 1){
+        if (randum2 == 2) {
+        document.game.life.value = Math.round(yourlife * .85)
+        document.game.f2.value = "Flame damage  " + Math.round(yourlife * .15) + " hit points."
+        document.game.badguy.value = "Shield armed soldier"
+        document.game.enemyattack.value = 10
+        document.game.enemyarmor.value = 5
+        document.game.badlife.value = 50
+        return false
+        }
+        if (randum2 == 1) {
+        document.game.attackdamage.value = yourattack + 1
+        document.game.f1.value = "You found a steroid"
+        }
+    document.game.life.value = Math.round(yourlife * .80)
+    document.game.f2.value = "Radiation damage  " + Math.round(yourlife * .20) + " hit points."
+    document.game.badguy.value = "Shield commander"
+    document.game.enemyattack.value = 33
+    document.game.enemyarmor.value = 10
+    document.game.badlife.value = 200
+    return false
+    }
+}
+if (1 > yourlife) {
+    document.game.f1.value = "YOU ARE DEAD"
+    document.game.f2.value = "DEAD"
+    document.game.experience.value = "DEAD"
+    document.game.money.value = 0
+    document.bgColor="black"
+    return false
+}   
+     if (randum == 2) {
+    document.game.badguy.value = "Shield agent"
+    document.game.enemyattack.value = 1
+    document.game.enemyarmor.value = 8
+    document.game.badlife.value = 9
+    }
+     if (randum == 3) {
+    document.game.badguy.value = "Agent may"
+    document.game.enemyattack.value = 2
+    document.game.enemyarmor.value = 8
+    document.game.badlife.value = 8
+    }
+    if (randum == 4) {
+    document.game.badguy.value = "Shield soldier"
+    document.game.enemyattack.value = 3
+    document.game.enemyarmor.value = 8
+    document.game.badlife.value = 10
+    }
+    if (randum == 5) {
+    document.game.badguy.value = "Shield soldier and cap enthusiast"
+    document.game.enemyattack.value = 4
+    document.game.enemyarmor.value = 8
+    document.game.badlife.value = 11
+    }
+    if (randum == 6) {
+    document.game.badguy.value = "Sokovia paper man"
+    document.game.enemyattack.value = 1
+    document.game.enemyarmor.value = 5
+    document.game.badlife.value = 1
+    }
+    if (randum == 7) {
+    document.game.badguy.value = "Sokovia worried mother"
+    document.game.enemyattack.value = 2
+    document.game.enemyarmor.value = 8
+    document.game.badlife.value = 10
+    }
+    if (randum == 8) {
+    document.game.badguy.value = "gunner"
+    document.game.enemyattack.value = 2
+    document.game.enemyarmor.value = 5
+    document.game.badlife.value = 15
+    }
+    if (randum == 9) {
+    document.game.badguy.value = "bomber"
+    document.game.enemyattack.value = 4
+    document.game.enemyarmor.value = 5
+    document.game.badlife.value = 16
+    }
+    if (randum == 10) {
+    document.game.badguy.value = "ghost of the past"
+    document.game.enemyattack.value = 0
+    document.game.enemyarmor.value = 1
+    document.game.badlife.value = 3
+    }
+    if (randum == 11) {
+    document.game.badguy.value = "Crossbones soldier"
+    document.game.enemyattack.value = 9
+    document.game.enemyarmor.value = 5
+    document.game.badlife.value = 30
+    }
+if (yourlevel > 2){
+    if (randum == 12) {
+    document.game.badguy.value = "Servant to crossbones"
+    document.game.enemyattack.value = 3
+    document.game.enemyarmor.value = 3
+    document.game.badlife.value = 15
+    }
+    if (randum == 13) {
+    document.game.badguy.value = "Elite Shield agent"
+    document.game.enemyattack.value = 6
+    document.game.enemyarmor.value = 3
+    document.game.badlife.value = 25
+    }
+    if (randum == 14) {
+    document.game.badguy.value = "Armed crossbones agent"
+    document.game.enemyattack.value = 7
+    document.game.enemyarmor.value = 3
+    document.game.badlife.value = 30
+    }
+    if (randum == 15) {
+    document.game.badguy.value = "Hydra armed soldier"
+    document.game.enemyattack.value = 8
+    document.game.enemyarmor.value = 3
+    document.game.badlife.value = 40
+    }
+    if (randum == 16) {
+    document.game.badguy.value = "Hydra soldier"
+    document.game.enemyattack.value = 8
+    document.game.enemyarmor.value = 3
+    document.game.badlife.value = 20
+    document.game.life.value = Math.round(yourlife - 4)
+    document.game.f2.value = "Arrow damage 4"
+    }
+}
+ 
+    if (randum == 17) {
+    document.game.badguy.value = "public"
+    document.game.enemyattack.value = 6
+    document.game.enemyarmor.value = 3
+    document.game.badlife.value = 35
+    }
+    if (randum == 18) {
+    document.game.badguy.value = "Heavily armed crossbones agent"
+    document.game.enemyattack.value = 9
+    document.game.enemyarmor.value = 5
+    document.game.badlife.value = 45
+    }
+    if (randum == 19) {
+    document.game.badguy.value = "Heavily armed Shield agent"
+    document.game.enemyattack.value = 14
+    document.game.enemyarmor.value = 3
+    document.game.badlife.value = 120
+    }
+    if (randum == 20) {
+    document.game.badguy.value = "Hydra scientist"
+    document.game.enemyattack.value = 18
+    document.game.enemyarmor.value = 3
+    document.game.badlife.value = 190
+    }
+    if (randum == 21) {
+    document.game.badguy.value = "the white skull"
+    document.game.enemyattack.value = 20
+    document.game.enemyarmor.value = 5
+    document.game.badlife.value = 210
+    }
+    if (randum > 22) {
+    document.game.badguy.value = "heavily armed Hydra agent"
+    document.game.enemyattack.value = 5
+    document.game.enemyarmor.value = 11
+    document.game.badlife.value = 120
+    }
+    if (randum > 23) {
+    document.game.badguy.value = "armed Shield agent"
+    document.game.enemyattack.value = 10
+    document.game.enemyarmor.value = 5
+    document.game.badlife.value = 100
+    }
+    if (randum == 24) {
+    document.game.life.value = yourlife - 3
+    document.game.f2.value = "Ouch!! You hit a trap. Lost 3 hit points."
+    }
+    if (randum == 25) {
+    document.game.badguy.value = "Hydra Shield agent"
+    document.game.enemyattack.value = 6
+    document.game.enemyarmor.value = 12
+    document.game.badlife.value = 60
+    }
+    if (randum == 26) {
+    document.game.badguy.value = "Romanoff"
+    document.game.enemyattack.value = 3
+    document.game.enemyarmor.value = 5
+    document.game.badlife.value = 150
+    }
+    if (randum == 27) {
+    document.game.money.value = cash + 15
+    document.game.f1.value = "You found 15 Gold"
+    }
+    if (randum == 28) {
+    document.game.badguy.value = "Peter Parker"
+    document.game.enemyattack.value = 13
+    document.game.enemyarmor.value = 5
+    document.game.badlife.value = 120
+    }
+    if (randum == 29)  {
+    document.game.badguy.value = "T'Challa"
+    document.game.enemyattack.value = 5
+    document.game.enemyarmor.value = 8
+    document.game.badlife.value = 140
+    }
+    if (randum == 30) {
+    document.game.badguy.value = "Tony Stark"
+    document.game.enemyattack.value = 6
+    document.game.enemyarmor.value = 8
+    document.game.badlife.value = 130
+    }
+    if (randum == 31) {
+    document.game.life.value = Math.round(yourlife * .70)
+    document.game.f2.value = "Ouch!! You hit a trap. lost " + Math.round(yourlife * .30) + " hit points."
+    }
+    if (randum == 32) {
+    document.game.badguy.value = "Hydra Shield armed soldier"
+    document.game.enemyattack.value = 15
+    document.game.enemyarmor.value = 4
+    document.game.badlife.value = 180
+    }
+    if (randum == 33) {
+    document.game.badguy.value = "James Rhodes"
+    document.game.enemyattack.value = 10
+    document.game.enemyarmor.value = 2
+    document.game.badlife.value = 150
+    }
+    if (randum == 34) {
+    document.game.badguy.value = "Crossbones"
+    document.game.enemyattack.value = 20
+    document.game.enemyarmor.value = 3
+    document.game.badlife.value = 250
+    }
+    if (randum == 35) {
+    document.game.badguy.value = "Dead winter soldier"
+    document.game.enemyattack.value = 15
+    document.game.enemyarmor.value = 5
+    document.game.badlife.value = 130
+    }
+    if (randum == 36) {
+    document.game.badguy.value = "Captain Americas inner self"
+    document.game.enemyattack.value = 5
+    document.game.enemyarmor.value = 12
+    document.game.badlife.value = 111
+    }
+    if (randum == 37) {
+    document.game.badguy.value = "Stark missile"
+    document.game.enemyattack.value = 10
+    document.game.enemyarmor.value = 5
+    document.game.badlife.value = 99
+    }
+    if (randum == 38) {
+    document.game.badguy.value = "Black Widow"
+    document.game.enemyattack.value = 10
+    document.game.enemyarmor.value = 2
+    document.game.badlife.value = 100
+    }
+    if (randum == 39) {
+    document.game.badguy.value = "Brainwashed Bucky"
+    document.game.enemyattack.value = 29
+    document.game.enemyarmor.value = 9
+    document.game.badlife.value = 200
+    }
+    if (randum == 40) {
+    document.game.life.value = Math.round(yourlife * .70)
+    document.game.f2.value = "Ouch!! You hit a trap. Lost " + Math.round(yourlife * .30) + " hit points."
+    }
+    if (randum == 41) {
+    document.game.badguy.value = "Old Crossbones"
+    document.game.enemyattack.value = 29
+    document.game.enemyarmor.value = 9
+    document.game.badlife.value = 200
+    }
+    if (randum == 42) {
+    document.game.badguy.value = "The Red Skull"
+    document.game.enemyattack.value = 29
+    document.game.enemyarmor.value = 9
+    document.game.badlife.value = 200
+    }
+    if (randum == 43) {
+    document.game.badguy.value = "Black Panther"
+    document.game.enemyattack.value = 32
+    document.game.enemyarmor.value = 10
+    document.game.badlife.value = 300
+    }
+    if (randum == 44) {
+    document.game.badguy.value = "Hurt War Machine"
+    document.game.enemyattack.value = 20
+    document.game.enemyarmor.value = 19
+    document.game.badlife.value = 200
+    }
+    if (randum == 45) {
+    document.game.badguy.value = "The Vision"
+    document.game.enemyattack.value = 40
+    document.game.enemyarmor.value = 10
+    document.game.badlife.value = 400
+    }
+    if (randum == 46) {
+    document.game.badguy.value = "Spider-Man"
+    document.game.enemyattack.value = 20
+    document.game.enemyarmor.value = 19
+    document.game.badlife.value = 300
+    }
+    if (randum == 47) {
+    document.game.badguy.value = "Hulk"
+    document.game.enemyattack.value = 50
+    document.game.enemyarmor.value = 3
+    document.game.badlife.value = 400
+    }
+    if (randum == 48) {
+    document.game.badguy.value = "Iron Man"
+    document.game.enemyattack.value = 50
+    document.game.enemyarmor.value = 3
+    document.game.badlife.value = 400
+    }
+    if (randum == 49) {
+    document.game.badguy.value = "War Machine"
+    document.game.enemyattack.value = 40
+    document.game.enemyarmor.value = 10
+    document.game.badlife.value = 350
+    }
+     
+}
+//=========================AtttttttacK=======================XXXXXXXXXXXXXXXXXXX
+    function attacker() {
+    document.game.f1.value = ""
+    document.game.f2.value = ""
+        var swordbonus = parseFloat(document.game.swordbonus.value)
+        var armorbonus = parseFloat(document.game.armorbonus.value)
+        var shieldbonus = parseFloat(document.game.shieldbonus.value)
+        var amuletbonus = parseFloat(document.game.amuletbonus.value)
+        var ringbonus = parseFloat(document.game.ringbonus.value)
+    var randum = Math.round(Math.random() * 20)
+    var randum1 = Math.round(Math.random() * 40)
+    var yougethit = parseFloat(document.game.armorclass.value)
+    var hegethit = parseFloat(document.game.enemyarmor.value)
+    var hurted = parseFloat(document.game.enemyattack.value)
+    var enemylife = parseFloat(document.game.badlife.value)
+    var yourattack = parseFloat(document.game.attackdamage.value)
+    var yourlife = parseFloat(document.game.life.value)
+    var enemyattack = parseFloat(document.game.enemyattack.value)
+    var yourexperience = parseFloat(document.game.experience.value)
+    var yourlevel = parseFloat(document.game.level.value)
+    var yourmoney = parseFloat(document.game.money.value)
+    var enemyarmor = parseFloat(document.game.enemyarmor.value)
+    var baldoo = parseFloat(document.game.baldo.value)
+    var story = parseFloat(document.game.story.value)
+//========== Level up=====================================XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+if (23 > yourlevel) {
+    if (yourexperience > ((yourlevel * 111) + .39 * yourexperience)) {
+    document.game.level.value = yourlevel + 1
+    document.game.f1.value = "LEVEL UP!!"
+    document.game.life.value = yourlife + (10 * yourlevel)
+    document.game.attackdamage.value = yourattack + 1
+        if (26 > yougethit) {
+        document.game.armorclass.value = yougethit + 1
+        }
+//=============================StoryLine=============================XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXSTORYLINE
+    if (yourlevel == 1) {
+    document.game.storyline.value = "Shield is after you"
+    }
+    if (yourlevel == 2) {
+    document.game.storyline.value = "Bucky and you negotiate, but he is already made up his mind"
+    }
+    if (yourlevel == 3) {
+    document.game.storyline.value = "The Black Panther apears and uses phycological warfare on you, you remeber the past"
+    document.game.badguy.value = "Past"
+    document.game.enemyattack.value = 11
+    document.game.enemyarmor.value = 5
+    document.game.badlife.value = 100
+    }
+    if (yourlevel == 4) {
+    document.game.storyline.value = "You reinvision the fight with Crossbones"
+    }
+    if (yourlevel == 5) {
+    document.game.storyline.value = "You  reinvision the fight against Hydra"
+    }
+    if (yourlevel == 6) {
+    document.game.storyline.value = "You reinvision the fight against Hydra Shield"
+    }
+    if (yourlevel == 7) {
+    document.game.storyline.value = "You have to fight shield again to save Bucky's innocence"
+    }
+    if (yourlevel == 8) {
+    document.game.storyline.value = "You fight and find out about Zemo"
+    }
+    if (yourlevel == 9) {
+    document.game.storyline.value = "You have to fight Thor"
+        document.game.swordbonus.value = 25
+        document.game.items.value = "Thor's hammer+25"
+        document.game.badguy.value = "Thor"
+        document.game.enemyattack.value = 49
+        document.game.enemyarmor.value = 5
+        document.game.badlife.value = 438
+        }
+    if (yourlevel == 12) {
+    document.game.storyline.value = "You  escape and find the airport, team Iron Man is waiting for you"
+        document.game.badguy.value = "Team Iron man"
+        document.game.enemyattack.value = 30
+        document.game.enemyarmor.value = 5
+        document.game.badlife.value = 500
+    }
+    if (yourlevel == 14) {
+    document.game.storyline.value = "You find your Shield "
+    document.game.yourring.value = "Caps Shield"
+    document.game.ringbonus.value = 6
+    }
+    if (yourlevel == 16) {
+    document.game.storyline.value = "You get to Zemo's lair and find Iron Man enraged"
+    document.game.badguy.value = "Enraged Iron Man"
+    document.game.enemyattack.value = 61
+    document.game.enemyarmor.value = 12
+    document.game.badlife.value = 1000
+    }
+    return false
+    }
+}
+//=========================Hit or Miss============================XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    if (1 > yourlife) {
+    document.game.f1.value = "YOU ARE DEAD"
+    document.game.f2.value = "YOU ARE DEAD"
+    alert("YOU ARE DEAD")
+    document.game.experience.value = 0
+    document.game.money.value = 0
+    document.bgColor="black"
+    document.game.storyline.value = "DEAD"
+    return false
+    }
+        if (enemylife > 0) {
+            if (randum > (hegethit - ringbonus)) {
+                if (randum == 14) {
+                document.game.badlife.value = enemylife - ((yourattack + swordbonus) * 2)
+                document.game.f1.value = "Critical Hit!!! you did " + ((yourattack + swordbonus) * 2)  + " points of damage!"
+                } else {
+                document.game.badlife.value = enemylife - (yourattack + swordbonus)
+                document.game.f1.value = "You hit the enemy for " + (yourattack + swordbonus)  + " damage points"
+                }
+            }
+            if (randum1 > (yougethit + armorbonus)) {
+            document.game.life.value = yourlife - (enemyattack - shieldbonus) - (2 * yourlevel)
+            document.game.f2.value = "You got hit for " + ((enemyattack - shieldbonus) + (2 * yourlevel)) + " hit points"
+            }
+        }
+    // =========================REWARDS =======================================XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    if (1 > enemylife) {
+    document.game.badlife.value = "DEAD"
+    document.game.baldo.value = baldoo + 1
+    document.game.experience.value = yourexperience + (enemyattack * enemyarmor)
+    document.game.money.value = yourmoney + (enemyattack * randum)
+    document.game.f1.value = "You have defeated your oppenent. You aquired " + (enemyattack * randum) + " gold. And " + (enemyattack * enemyarmor) + " experience"
+        if (randum == 15) {
+        document.game.life.value = yourlife + 15
+        document.game.f2.value = "You found the captain America serum"
+        }
+            if (document.game.enemyattack.value == 49) {
+            document.game.level.value = yourlevel + 1
+            document.game.badguy.value = "DEAD"
+            document.game.storyline.value = "After Zemo's wall, you get a missile"
+            }
+            if (document.game.enemyattack.value == 30) {
+            document.game.badguy.value = "DEAD"
+            document.game.swordbonus.value = 25
+                document.game.items.value = "Thor's hammer+25"
+            document.game.storyline.value = "You leave the airport."
+            }
+            if (document.game.enemyattack.value == 61) {
+            document.game.badguy.value = "Zemo is defeated"
+            document.game.storyline.value = "You have stopped Zemo and calmed down Tony"
+            document.bgColor="green"
+            document.game.level.value = 1
+            document.game.experience.value = 1
+            document.game.yourring.value = ""
+            document.game.ringbonus.value = 5
+            }
+            if (document.game.enemyattack.value == 11) {
+            document.game.badguy.value = "DEAD"
+            document.game.storyline.value = "You enter your past."
+            }
+        }
+}
+//==========================HEAL=======================XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    function heal() {
+    var yourlife = parseFloat(document.game.life.value)
+    var healpower = parseFloat(document.game.healpower.value)
+    if (1 > yourlife) {
+    document.game.f1.value = "DEAD"
+    document.game.f2.value = "DEAD"
+    alert("YOU ARE DEAD")
+    document.game.experience.value = 0
+    document.game.money.value = 0
+    return false
+    }   
+    var cash = parseFloat(document.game.money.value)
+    var yourlife = parseFloat(document.game.life.value)
+    var yourexperience = parseFloat(document.game.experience.value)
+    if (cash > 24) {
+    document.game.money.value = cash - 25
+    document.game.life.value = yourlife + healpower
+    document.game.experience.value = yourexperience + 10
+    }
+}
+//===========================BUY STUFF======================XXXXXXXXXXXXXXXXXXXXX
+//==========store1==============
+function buysomethin() {
+var yourlife = parseFloat(document.game.life.value)
+var yourlevel = parseFloat(document.game.level.value)
+var randum2 = Math.round(Math.random() * 21)
+var randum = Math.round(Math.random() * 20)
+//================store 1 items======
+    if (randum == 1) {
+    document.game.item1.value = "Gun+7/cost= 290/"
+    document.game.xitem1.value = 1
+    }
+    if (randum == 2) {
+    document.game.item1.value = "First Shield+2/cost= 100"
+    document.game.xitem1.value = 2
+    }
+    if (randum == 3) {
+    document.game.item1.value = "Bomerang Shield+3/cost= 220"
+    document.game.xitem1.value = 3
+    }
+    if (randum == 4) {
+    document.game.item1.value = "S.H.I.E.L.D. shield/cost= 55"
+    document.game.xitem1.value = 2
+    }
+    if (randum == 5) {
+    document.game.item1.value = "Fondue/cost=50"
+    document.game.xitem1.value = 5
+    }
+    if (randum == 6) {
+    document.game.item1.value = "Reality Barrier+4/cost= 300"
+    document.game.xitem1.value = 6
+    }
+    if (randum == 7) {
+    document.game.item1.value = "Caps first Suit+3/cost= 200"
+    document.game.xitem1.value = 7
+    }
+    if (randum == 8) {
+    document.game.item1.value = "Caps good suit+4/cost= 350"
+    document.game.xitem1.value = 8
+    }
+    if (randum == 9) {
+    document.game.item1.value = "Facing buckys death+2/cost=100"
+    document.game.xitem1.value = 9
+    }
+ 
+    if (randum == 10) {
+    document.game.item1.value = "Caps muscles+5/cost=900"
+    document.game.xitem1.value = 10
+    }
+    if (randum == 11) {
+    document.game.item1.value = "Antman grower+15/cost=800"
+    document.game.xitem1.value = 11
+    }
+    if (randum == 12) {
+    document.game.item1.value = "Vibranium shield+10/cost=1000"
+    document.game.xitem1.value = 12
+    }
+    if (randum == 13) {
+    document.game.item1.value = "Gamble/cost=50"
+    document.game.xitem1.value = 13
+    }
+    if (randum == 14) {
+    document.game.item1.value = "Gamble/cost=100"
+    document.game.xitem1.value = 14
+    }
+    if (randum == 15) {
+    document.game.item1.value = "Hawkeyes bow+6/cost=240"
+    document.game.xitem1.value = 15
+    }
+    if (randum == 16) {
+    document.game.item1.value = "Caps cap/cost=20"
+    document.game.xitem1.value = 16
+    }
+    if (randum == 17) {
+    document.game.item1.value = "Nicks eye+3/cost=100"
+    document.game.xitem1.value = 17
+    }
+    if (randum == 18) {
+    document.game.item1.value = "Arrow+2/cost=80"
+    document.game.xitem1.value = 18
+    }
+    if (randum == 19) {
+    document.game.item1.value = "Caps fists/cost=10"
+    document.game.xitem1.value = 19
+    }
+    if (randum == 20) {
+    document.game.item1.value = "Thors pool"
+    document.game.xitem1.value = 20
+    }
+ 
+//===============store2 items==================================================================
+    if (randum2 == 1) {
+    document.game.item2.value = "Black widows taser+3/cost=100"
+    document.game.xitem2.value = 1
+    }
+    if (randum2 == 2) {
+    document.game.item2.value = "Falcons wings+3/cost=200"
+    document.game.xitem2.value = 2
+    }
+    if (randum2 == 3) {
+    document.game.item2.value = "Hulks blood=30/cost=150"
+    document.game.xitem2.value = 3
+    }
+    if (randum2 == 4) {
+    document.game.item2.value = "Caps blood=40/cost=250"
+    document.game.xitem2.value = 4
+    }
+    if (randum2 == 5) {
+    document.game.item2.value = "Buckys arm+4/cost=350"
+    document.game.xitem2.value = 5
+    }
+    if (randum2 == 6) {
+    document.game.item2.value = "Witnessing time freeze/cost=75"
+    document.game.xitem2.value = 6
+    }
+    if (randum2 == 7) {
+    document.game.item2.value = "Sokovia accords/cost=50"
+    document.game.xitem2.value = 7
+    }
+    if (randum2 == 8) {
+    document.game.item2.value = "Hulks beefyness/cost=200"
+    document.game.xitem2.value = 8
+    }
+    if (randum2 == 9) {
+    document.game.item2.value = "Witnessing carters death+3/cost=250"
+    document.game.xitem2.value = 9
+    }
+ 
+    if (randum2 == 10) {
+    document.game.item2.value = "Mission report december 16+5/cost=600"
+    document.game.xitem2.value = 10
+    }
+    if (randum2 == 11) {
+    document.game.item2.value = "Asian lady/Heal=50/cost=500"
+    document.game.xitem2.value = 11
+    }
+    if (randum2 == 12) {
+    document.game.item2.value = "Black widows sweet moves+4/cost=150"
+    document.game.xitem2.value = 12
+    }
+    if (randum2 == 13) {
+    document.game.item2.value = "Hawkeye human sheild+4/cost=250"
+    document.game.xitem2.value = 13
+    }
+    if (randum2 == 14) {
+    document.game.item2.value = "Hawkeyes armor+4/cost=300"
+    document.game.xitem2.value = 14
+    }
+    if (randum2 == 15) {
+    document.game.item2.value = "Antmans shrink bomb/cost=10"
+    document.game.xitem2.value = 15
+    }
+    if (randum2 == 16) {
+    document.game.item2.value = "Giant Antman/cost=+600"
+    document.game.xitem2.value = 16
+    }
+    if (randum2 == 17) {
+    document.game.item2.value = "Falcon drone+8/Cost=350"
+    document.game.xitem2.value = 17
+    }
+    if (randum2 == 18) {
+    document.game.item2.value = "Alcohol"
+    document.game.xitem2.value = 18
+    }
+    if (randum2 == 19) {
+    document.game.item2.value = "Effect of serum"
+    document.game.xitem2.value = 19
+    }
+    if (randum2 == 20) {
+    document.game.item2.value = "10 Gold "
+    document.game.xitem2.value = 20
+    }
+    if (randum2 == 21) {
+    document.game.item2.value = "50 Gold"
+    document.game.xitem2.value = 21
+    }
+}   
+//==============store1===========================================================================
+function buyitem1() {
+var randy = Math.round(Math.random() * 150)
+var theitem = document.game.xitem1.value
+var yourmoney = parseFloat(document.game.money.value)
+var yourattack = parseFloat(document.game.attackdamage.value)
+var yourstuff = document.game.items.value
+var yougethit = parseFloat(document.game.armorclass.value)
+var yourlife = parseFloat(document.game.life.value)
+        var swordbonus = parseFloat(document.game.swordbonus.value)
+        var armorbonus = parseFloat(document.game.armorbonus.value)
+        var shieldbonus = parseFloat(document.game.shieldbonus.value)
+        var amuletbonus = parseFloat(document.game.amuletbonus.value)
+        var ringbonus = parseFloat(document.game.ringbonus.value)
+    if (theitem == 1) {
+        if (yourmoney > 289) {
+    document.game.money.value = yourmoney - 290
+    document.game.swordbonus.value = 7
+    document.game.item1.value = "Bought"
+    document.game.xitem1.value = 0
+    document.game.items.value = "Gun+7 "
+        }
+    }
+    if (theitem == 2) {
+        if (yourmoney > 74) {
+        document.game.money.value = yourmoney - 100
+        document.game.shieldbonus.value = 2
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.yourshield.value = "First Shield+2"
+        }
+    }
+    if (theitem == 3) {
+        if (yourmoney > 219) {
+        document.game.money.value = yourmoney - 220
+        document.game.shieldbonus.value = 3
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.yourshield.value = "Bomerang Shield+3 "
+        }
+    }
+    if (theitem == 4) {
+        if (yourmoney > 84) {
+        document.game.money.value = yourmoney - 55
+        document.game.shieldbonus.value = 1
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.yourshield.value = "S.H.I.E.L.D. Shield "
+        }
+    }
+        if (theitem == 5) {
+        if (yourmoney > 49) {
+        document.game.money.value = yourmoney - 50
+        document.game.life.value = yourlife + 55
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        }
+    }
+        if (theitem == 6) {
+        if (yourmoney > 299) {
+        document.game.money.value = yourmoney - 300
+        document.game.shieldbonus.value = 4
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.yourshield.value = "Reality barrier+4 "
+        }
+    }
+        if (theitem == 7) {
+        if (yourmoney > 199) {
+        document.game.money.value = yourmoney - 200
+        document.game.armorbonus.value = 3
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.yourarmor.value = "Caps first Suit+3"
+        }
+    }
+        if (theitem == 8) {
+        if (yourmoney > 299) {
+        document.game.money.value = yourmoney - 300
+        document.game.armorbonus.value = 4
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.yourarmor.value = "Caps good suit+4"
+        }
+    }
+        if (theitem == 9) {
+        if (yourmoney > 99) {
+        document.game.money.value = yourmoney - 100
+        document.game.ringbonus.value = 2
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.yourring.value = "Facing bucky death+2"
+        }
+    }
+        if (theitem == 10) {
+        if (yourmoney > 899) {
+        document.game.money.value = yourmoney - 900
+        document.game.armorbonus.value = 5
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.yourarmor.value = "Caps muscles+5"
+        }
+    }
+        if (theitem == 11) {
+        if (yourmoney > 799) {
+        document.game.money.value = yourmoney - 800
+        document.game.swordbonus.value = 15
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.items.value = "Antman grower+15 "
+        }
+    }
+        if (theitem == 12) {
+        if (yourmoney > 999) {
+        document.game.money.value = yourmoney - 1000
+        document.game.shieldbonus.value = 10
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.yourshield.value = "Vibranium shield+10"
+        }
+    }
+        if (theitem == 13) {
+        if (yourmoney > 49) {
+        document.game.money.value = (yourmoney + randy) - 50
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.f1.value = "You won " + (randy) + " Gold"
+        }
+    }
+        if (theitem == 14) {
+        if (yourmoney > 99) {
+        document.game.money.value = (yourmoney + randy) - 100
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.f1.value = "You won " + (randy) + " Gold"
+        }
+    }
+        if (theitem == 15) {
+    if (yourmoney > 239) {
+        document.game.money.value = yourmoney - 240
+        document.game.swordbonus.value = 6
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.items.value = "Hawkeyes bow+6 "
+        }
+    }
+        if (theitem == 16) {
+        if (yourmoney > 19) {
+        document.game.money.value = yourmoney - 20
+        document.game.armorbonus.value = 1
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.yourarmor.value = "Caps cap"
+        }
+    }
+        if (theitem == 17) {
+    if (yourmoney > 99) {
+        document.game.money.value = yourmoney - 100
+        document.game.swordbonus.value = 3
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.items.value = "Nicks eye+3 "
+        }
+    }
+        if (theitem == 18) {
+    if (yourmoney > 79) {
+        document.game.money.value = yourmoney - 80
+        document.game.swordbonus.value = 2
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.items.value = "Arrow+2 "
+        }
+    }
+        if (theitem == 19) {
+    if (yourmoney > 9) {
+        document.game.money.value = yourmoney - 10
+        document.game.swordbonus.value = 1
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.items.value = "Caps fists "
+        }
+    }
+        if (theitem == 20) {
+        document.game.item1.value = "Picked Up"
+        document.game.xitem1.value = 0
+        document.game.attackdamage.value = yourattack + 2
+        document.game.f1.value = "You ate the Herb. It made you fell stronger but stupider. Gain 2 Strength. Lost 50 experience."
+                 
+    }
+}   
+//==========================store2====================================================
+function buyitem2() {
+var theitem = document.game.xitem2.value
+var yourlife = parseFloat(document.game.life.value)
+var yourmoney = parseFloat(document.game.money.value)
+var yourattack = parseFloat(document.game.attackdamage.value)
+var yougethit = parseFloat(document.game.armorclass.value)
+var healpower = parseFloat(document.game.healpower.value)
+var yourexperience = parseFloat(document.game.experience.value)
+        var swordbonus = parseFloat(document.game.swordbonus.value)
+        var armorbonus = parseFloat(document.game.armorbonus.value)
+        var shieldbonus = parseFloat(document.game.shieldbonus.value)
+        var amuletbonus = parseFloat(document.game.amuletbonus.value)
+        var ringbonus = parseFloat(document.game.ringbonus.value)
+    if (theitem == 1) {
+        if (yourmoney > 99) {
+    document.game.money.value = yourmoney - 100
+    document.game.swordbonus.value = 3
+    document.game.item2.value = "Bought"
+    document.game.xitem2.value = 0
+    document.game.items.value = "Black window taser+3"
+        }
+    }
+    if (theitem == 2) {
+        if (yourmoney > 199) {
+        document.game.money.value = yourmoney - 200
+        document.game.shieldbonus.value = 3
+        document.game.item2.value = "Bought"
+        document.game.xitem2.value = 0
+        document.game.yourshield.value = "Falcons wings+3 "
+        }
+    }
+        if (theitem == 3) {
+        if (yourmoney > 149) {
+        document.game.money.value = yourmoney - 150
+        document.game.healpower.value = 30
+        document.game.item2.value = "Bought"
+        document.game.xitem2.value = 0
+        document.game.youramulet.value = "Hulks blood/Heal = 30"
+        }
+    }
+        if (theitem == 4) {
+        if (yourmoney > 99) {
+        document.game.money.value = yourmoney - 250
+        document.game.healpower.value = 40
+        document.game.item2.value = "Bought"
+        document.game.xitem2.value = 0
+        document.game.youramulet.value = "Caps blood/Heal = 40"
+        }
+    }
+        if (theitem == 5) {
+        if (yourmoney > 349) {
+        document.game.money.value = yourmoney - 350
+        document.game.armorbonus.value = 4
+        document.game.item2.value = "Bought"
+        document.game.xitem2.value = 0
+        document.game.yourarmor.value = "Bucky arm+4"
+        }
+    }
+        if (theitem == 6) {
+        if (yourmoney > 74) {
+        document.game.money.value = yourmoney - 75
+        document.game.item2.value = "Bought"
+        document.game.experience.value = yourexperience + 65
+        document.game.f1.value = "You read a book. Gained 65 Experience"
+        document.game.xitem2.value = 0
+        }
+    }
+        if (theitem == 7) {
+        if (yourmoney > 49) {
+        document.game.money.value = yourmoney - 50
+        document.game.item2.value = "Bought"
+        document.game.experience.value = yourexperience + 100
+        document.game.f1.value = "You read a book. Gained 100 Experience"
+        document.game.xitem2.value = 0
+        }
+    }
+        if (theitem == 8) {
+        if (yourmoney > 199) {
+        document.game.money.value = yourmoney - 200
+        document.game.item2.value = "Bought"
+        document.game.attackdamage.value = yourattack + 3
+        document.game.f1.value = "You took a pill. Gained some strength"
+        document.game.xitem2.value = 0
+        }
+    }
+        if (theitem == 9) {
+        if (yourmoney > 249) {
+        document.game.money.value = yourmoney - 250
+        document.game.ringbonus.value = 3
+        document.game.item2.value = "Bought"
+        document.game.xitem2.value = 0
+        document.game.yourring.value = "Witnessing carters death+3"
+        }
+    }
+        if (theitem == 10) {
+        if (yourmoney > 599) {
+        document.game.money.value = yourmoney - 600
+        document.game.ringbonus.value = 5
+        document.game.item2.value = "Bought"
+        document.game.xitem2.value = 0
+        document.game.yourring.value = "Mission report december 16+5"
+        }
+    }
+        if (theitem == 11) {
+        if (yourmoney > 499) {
+        document.game.money.value = yourmoney - 500
+        document.game.healpower.value = 50
+        document.game.item2.value = "Bought"
+        document.game.xitem2.value = 0
+        document.game.life.value = yourlife + 150
+        document.game.youramulet.value = "Asian lady/Heal=50"
+        }
+    }
+    if (theitem == 12) {
+        if (yourmoney > 149) {
+    document.game.money.value = yourmoney - 150
+    document.game.swordbonus.value = 4
+    document.game.item2.value = "Bought"
+    document.game.xitem2.value = 0
+    document.game.items.value = "Black widows sweet moves+4"
+        }
+    }
+        if (theitem == 13) {
+        if (yourmoney > 249) {
+        document.game.money.value = yourmoney - 250
+        document.game.shieldbonus.value = 4
+        document.game.item2.value = "Bought"
+        document.game.xitem2.value = 0
+        document.game.yourshield.value = "Hawkeye human shield+4 "
+        }
+    }
+        if (theitem == 14) {
+        if (yourmoney > 299) {
+        document.game.money.value = yourmoney - 300
+        document.game.armorbonus.value = 4
+        document.game.item1.value = "Bought"
+        document.game.xitem1.value = 0
+        document.game.yourarmor.value = "Hawkeyes armor+4"
+        }
+    }
+        if (theitem == 15) {
+    if (yourmoney > 9) {
+    document.game.money.value = yourmoney - 10
+    document.game.swordbonus.value = 1
+    document.game.item2.value = "Bought"
+    document.game.xitem2.value = 0
+    document.game.items.value = "Antmans shrink bomb"
+        }
+    }
+    if (theitem == 16) {
+        if (yourmoney > 599) {
+    document.game.money.value = yourmoney - 600
+    document.game.swordbonus.value = 12
+    document.game.item2.value = "Bought"
+    document.game.xitem2.value = 0
+    document.game.items.value = "Giant Antman+12"
+        }
+    }
+    if (theitem == 17) {
+        if (yourmoney > 349) {
+    document.game.money.value = yourmoney - 350
+    document.game.swordbonus.value = 8
+    document.game.item2.value = "Bought"
+    document.game.xitem2.value = 0
+    document.game.items.value = "Falcon drone+8"
+        }
+    }
+    if (theitem == 18) {
+    document.game.item2.value = "Picked Up"
+    document.game.xitem2.value = 0
+    document.game.life.value = yourlife + 50
+    document.game.attackdamage.value = yourattack + 1
+    document.game.f1.value = "You ate the Herb. It made you fell good. Gained 50 life. 1 Strength."
+    }
+    if (theitem == 19) {
+    document.game.item2.value = "Picked Up"
+    document.game.xitem2.value = 0
+    document.game.life.value = yourlife - 50
+    document.game.f1.value = "You ate the Herb it made you sick. Lost 50 life."
+    }
+    if (theitem == 20) {
+    document.game.item2.value = "Picked Up"
+    document.game.xitem2.value = 0
+    document.game.money.value = yourmoney + 10
+    }
+    if (theitem == 21) {
+    document.game.item2.value = "Picked Up"
+    document.game.xitem2.value = 0
+    document.game.money.value = yourmoney + 50
+    }
+ }
+</script>
+<meta name="GENERATOR" content="Visual Page 2.0 for Windows">
+</head>
+<body bgcolor="#fffbf0" text="#000000" link="#0000FF" alink="#008000" vlink="#FF0000">
+<form action="mailto:????@youremailaddress.com" method="post" enctype="application/x-www-form-urlencoded" name="game">
+<center>
+<p>
+<b><a href="http://www.playandpost.com/"><font size="5" color=#333333 face="Century Gothic"><i>Zemos gate</i></font></a><big><big><font color=#333333 face="Century Gothic"><i> 2</i></font></big></big></b></p>
+</center>
+<center>
+<p>
+<b><blink><big><big><font color=#333333 face="Blackadder ITC">&nbsp; Tony</font></big></big></blink></b></p>
+</center>
+<center>
+<p>
+<textarea name="storyline" rows="9" cols="62"> Tony hates you
+</textarea>
+<table bgcolor="#666666" border="0" cellpadding="0" cellspacing="0" width="647" height="96">
+<tbody>
+<tr>
+<td bgcolor="#333333" width="187">
+<p>
+<font face="Arial Narrow">&nbsp;</font><a href="http://www.playandpost.com/"><font size="1" color=#006600>A PlayandPost.com Production</font></a></p>
+</td>
+<td bgcolor="#333333" colspan="2" width="208">
+<p align="center">
+<b><font color=#fffbf0 face="Book Antiqua">STATUS</font></b></p>
+</td>
+<td bgcolor="#333333" width="247">
+<p>
+<font face="Arial Narrow">&nbsp;<input type="hidden" name="swordbonus" value="0" size="-1">
+<input type="hidden" name="shieldbonus" value="0" size="-1">
+<input type="hidden" name="armorbonus" value="0" size="-1">
+<input type="hidden" name="amuletbonus" value="0" size="-1">
+<input type="hidden" name="ringbonus" value="0" size="-1">
+</font></p>
+</td>
+</tr>
+<tr>
+<td width="187" height="37">
+<div align="right">
+<p>
+<font face="Bradley Hand ITC">Gold =</font><font face="Arial Narrow"><input type="text" name="money" value="20" size="5">
+</font></p>
+</div>
+</td>
+<td colspan="2" width="208" height="37">
+<div align="right">
+<p>
+<font face="Bradley Hand ITC">&nbsp;Life =</font><font face="Arial Narrow"><input type="text" name="life" value="50" size="5">
+</font></p>
+</div>
+</td>
+<td width="248" height="37">
+<center>
+<p>
+<font face="Bradley Hand ITC">&nbsp;Armor Class =</font><font face="Arial Narrow"><input type="text" name="armorclass" value="20" size="3">
+</font></p>
+</center>
+</td>
+</tr>
+<tr>
+<td width="187" height="32">
+<center>
+<p>
+<font face="Bradley Hand ITC">&nbsp;Experience =</font><font face="Arial Narrow"><input type="text" name="experience" value="0" size="9">
+</font></p>
+</center>
+</td>
+<td colspan="2" width="208" height="32">
+<div align="right">
+<p>
+<font face="Bradley Hand ITC">&nbsp;Attack Damage =</font><font face="Arial Narrow"><input type="text" name="attackdamage" value="5" size="4">
+</font></p>
+</div>
+</td>
+<td width="159" height="32">
+<center>
+<p>
+<font face="Bradley Hand ITC">&nbsp;&nbsp;Level =</font><font face="Arial Narrow"><input type="text" name="level" value="1" size="3">
+</font></p>
+</center>
+</td>
+</tr>
+</tbody>
+</table>
+<table bgcolor="#C0C0C0" border="1" cellpadding="0" cellspacing="0" width="664" height="38">
+<tr>
+<td align="center" width="100%" height="15">
+<p>
+<input type="text" name="f1" size="79" maxlength="400">
+</p>
+</td>
+</tr>
+<tr>
+<td align="center" height="21">
+<input type="text" name="f2" size="80" maxlength="400">
+</td>
+</tr>
+</table>
+<table bgcolor="#808080" border="0" cellpadding="0" cellspacing="0" width="686" height="152">
+<tr>
+<td align="left" bgcolor="#333333" valign="Middle" width="27%">
+<p align="center">
+<font face="Bradley Hand ITC"><b>&nbsp;</b></font><b><font color=#fffbf0 face="Book Antiqua">ACTIONS</font></b></p>
+</td>
+<td align="left" bgcolor="#333333" valign="Middle" width="35%">
+<p align="center">
+<b><font color=#fffbf0 face="Book Antiqua"><i>ENEMY</i></font></b></p>
+</td>
+<td align="left" bgcolor="#333333" valign="Middle" width="38%">
+<p align="center">
+<font face="Arial Narrow">&nbsp;</font><b><font color=#fffbf0 face="Book Antiqua">INVENTORY</font></b></p>
+</td>
+</tr>
+<tr>
+<td width="27%">
+<p align="center">
+&nbsp;<input type="button" name="attack" value="Attack" onclick="attacker()">
+</p>
+</td>
+<td align="left" bgcolor="#A0A0A4" rowspan="1" valign="Middle" width="35%">
+<p align="center">
+<font face="Arial Narrow">&nbsp;<input type="text" name="badguy" size="21">
+</font></p>
+</td>
+<td rowspan="1" width="38%">
+<p align="right">
+&nbsp;<font face="Blackadder ITC">Weapon</font><font face="Arial Narrow">-<input type="text" name="items" size="21">
+</font></p>
+</td>
+</tr>
+<tr>
+<td width="27%">
+<p align="center">
+<input type="hidden" name="healpower" value="20" size="-1">
+<input type="button" name="Submit" value="HEAL cost=25$" onclick="heal()">
+</p>
+</td>
+<td align="left" bgcolor="#A0A0A4" valign="Middle" width="35%">
+<p align="center">
+<font color=#fffbf0 face="Bradley Hand ITC">Hit Points</font><font color=#fffbf0 face="Arial Narrow"> =</font><font face="Arial Narrow"><input type="text" name="badlife" size="5">
+</font></p>
+</td>
+<td width="38%">
+<p align="right">
+&nbsp;<font face="Blackadder ITC">Carters gun</font><font face="Arial Narrow">-<input type="text" name="yourshield" size="21">
+</font></p>
+</td>
+</tr>
+<tr>
+<td width="27%" height="22">
+<p align="center">
+<font face="Arial Narrow"><input type="hidden" name="baldo" value="0" size="-1">
+<input type="hidden" name="story" value="0" size="-1">
+</font><input type="button" name="findstuff" value="SEARCH" onclick="opponent()">
+<font face="Arial Narrow"><input type="hidden" name="enemyattack" size="-1">
+<input type="hidden" name="enemyarmor" size="-1">
+</font></p>
+</td>
+<td width="35%" height="22">
+<p>
+&nbsp;</p>
+</td>
+<td width="38%" height="22">
+<p align="right">
+&nbsp;<font face="Blackadder ITC">Vibranium</font><font face="Arial Narrow">-<input type="text" name="yourarmor" size="21">
+</font></p>
+</td>
+</tr>
+<tr>
+<td width="27%" height="19">
+<p align="right">
+<font face="Arial Narrow">&nbsp;</font><input type="hidden" name="xitem1" size="-1">
+<input type="button" name="Submit" value="Get" onclick="buyitem1()">
+</p>
+</td>
+<td width="35%" height="19">
+<p align="left">
+<input type="text" name="item1" size="28">
+</p>
+</td>
+<td width="38%" height="19">
+<p align="right">
+&nbsp;<font face="Blackadder ITC">Buckys broken arm</font><font face="Arial Narrow">-<input type="text" name="youramulet" size="21">
+</font></p>
+</td>
+</tr>
+<tr>
+<td width="27%" height="29">
+<p align="right">
+&nbsp;<input type="hidden" name="xitem2" size="-1">
+<input type="button" name="Submit2" value="Get" onclick="buyitem2()">
+</p>
+</td>
+<td width="35%" height="29">
+<p align="left">
+<input type="text" name="item2" size="28">
+</p>
+</td>
+<td width="38%" height="29">
+<p align="right">
+&nbsp;<font face="Blackadder ITC">Carbonite freezing</font><font face="Arial Narrow">-<input type="text" name="yourring" size="21">
+</font></p>
+</td>
+</tr>
+</table>
+</p>
+</center>
+<center>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" width="307" height="158">
+<tbody>
+<tr>
+<td width="56" height="26">
+<p align="center">
+<font face="Bradley Hand ITC">ITEM</font></p>
+</td>
+<td width="243" height="26">
+<p align="center">
+<font face="Bradley Hand ITC">ABILITY</font></p>
+</td>
+</tr>
+<tr>
+<td width="56">
+<p>
+<font face="Bradley Hand ITC">Negotiantion-</font></p>
+</td>
+<td width="243">
+<p>
+<font face="Bradley Hand ITC">Gives a bonus to your attack</font></p>
+</td>
+</tr>
+<tr>
+<td width="56">
+<p>
+<font face="Bradley Hand ITC">Resistance-</font></p>
+</td>
+<td width="243">
+<p>
+<font face="Bradley Hand ITC">Absorbs damage</font></p>
+</td>
+</tr>
+<tr>
+<td width="56">
+<p>
+<font face="Bradley Hand ITC">Caps armor-</font></p>
+</td>
+<td width="243">
+<p>
+<font face="Bradley Hand ITC">Improves armor class</font></p>
+</td>
+</tr>
+<tr>
+<td width="56">
+<p>
+<font face="Bradley Hand ITC">Banaid-</font></p>
+</td>
+<td width="243">
+<p>
+<font face="Bradley Hand ITC">Raises heal power</font></p>
+</td>
+</tr>
+<tr>
+<td width="56" height="27">
+<p>
+<font face="Bradley Hand ITC">Metal shield-</font></p>
+</td>
+<td width="243" height="27">
+<p>
+<font face="Bradley Hand ITC">Increases chance of hitting</font></p>
+</td>
+</tr>
+</tbody>
+</table>
+</p>
+</center>
+<center>
+<p>
+<font face="Bradley Hand ITC">To play the most current version visit <a href="http://www.playandpost.com">playandpost.com</a></font></p>
+<p>
+<font face="Bradley Hand ITC">Tips- Choose your opponents wisely you do not have to fight every opponent. Every time you search you risk hitting a trap or being robbed. Don't walk around naked. Somebody has to be the first person to eat something. To play Baldo's Gate offline save this file to disk.</font></p>
+</center>
+<center>
+<p>
+<br>
+<a href="http://www.playandpost.com/"><font color=#006600>Brought to you by PlayandPost.com</font></a></p>
+</center>
+<p>
+<center>
+</center>
+<center>
+</center>
+<center>
+</center>
+</p>
+</form>
+</body>
+</html>

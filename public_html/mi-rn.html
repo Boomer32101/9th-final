@@ -13,8 +13,32 @@ and open the template in the editor.
         <link rel="icon" href="data:;base64,iVBORwOKGgo=">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+div#load_screen{
+	background: #000;
+	opacity: 1;
+	position: fixed;
+    z-index:10;
+	top: 0px;
+	width: 100%;
+	height: 1600px;
+}
+div#load_screen > div#loading{
+	color:#FFF;
+	width:120px;
+	height:24px;
+	margin: 300px auto;
+}
+</style>
+<script>
+window.addEventListener("load", function(){
+	var load_screen = document.getElementById("load_screen");
+	document.body.removeChild(load_screen);
+});
+</script>
     </head>
     <body>
+                <div id="load_screen"><div id="loading">loading document<img src="http://www.the-fanboy-perspective.com/uploads/1/7/3/8/17382151/3481939_orig.gif" style="width:600px;height:auto;" alt="catch" class="left"></div></div>
         <header>
             <nav class="fixed-nav-bar grey">
                 <div class="nav-wrapper">
@@ -92,6 +116,14 @@ and open the template in the editor.
         
         <footer class="page-footer grey">
             <div class="container">
+                <fieldset class="rating">
+    <legend>Please rate:</legend>
+    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+</fieldset>
                 <!-- begin htmlcommentbox.com -->
  <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>
  <link rel="stylesheet" type="text/css" href="http://www.htmlcommentbox.com/static/skins/default/skin.css" />
